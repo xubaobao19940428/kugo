@@ -1,0 +1,73 @@
+@use './variables' as *;
+@use './mixins' as *;
+
+.footer {
+  @include flex-column;
+  background-color: $bg-dark;
+  border-top: 1px solid $border-dark;
+  padding: $spacing-xl $spacing-md;
+  margin-top: auto;
+  width: 100%;
+
+  @include desktop {
+    padding: $spacing-2xl 10vw;
+  }
+
+  &__content {
+    @include flex-column;
+    gap: $spacing-xl;
+    width: 100%;
+    
+    @include desktop {
+      @include flex-row;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+  }
+
+  &__brand {
+    @include flex-column;
+    gap: $spacing-sm;
+  }
+
+  &__logo {
+    font-size: $font-size-2xl;
+    font-weight: 700;
+    @include gradient-purple;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+  }
+
+  &__tagline {
+    color: $text-secondary;
+    font-size: $font-size-sm;
+  }
+
+  &__address {
+    color: $text-muted;
+    font-size: $font-size-xs;
+    margin-top: $spacing-md;
+    font-style: normal;
+    line-height: 1.5;
+  }
+
+  &__links {
+    @include flex-column;
+    gap: $spacing-md;
+
+    @include desktop {
+      align-items: flex-end;
+    }
+  }
+
+  &__copyright {
+    color: $text-muted;
+    font-size: $font-size-xs;
+    text-align: center;
+    margin-top: $spacing-2xl;
+    padding-top: $spacing-lg;
+    border-top: 1px solid $border-dark;
+    width: 100%;
+  }
+}

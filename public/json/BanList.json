@@ -1,0 +1,23 @@
+{
+  "lastUpdate": "02/02/2025",
+  "records": [
+    {
+      "id": 100001,
+      "nickname": "V*****r",
+      "reason": "Violation of Community Guidelines - Harassment",
+      "bannedTime": "01/15/2025"
+    },
+    {
+      "id": 100002,
+      "nickname": "S*****m",
+      "reason": "Spam and Fraudulent Activity",
+      "bannedTime": "01/20/2025"
+    },
+    {
+      "id": 100003,
+      "nickname": "D*****k",
+      "reason": "Sharing Inappropriate Content",
+      "bannedTime": "01/25/2025"
+    }
+  ]
+}

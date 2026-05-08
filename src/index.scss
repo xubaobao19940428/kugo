@@ -1,0 +1,126 @@
+@use './styles/_variables.scss' as *;
+@use './styles/_mixins.scss' as *;
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+$font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  width: 100%;
+  min-width: 100%;
+  height: 100%;
+  // overflow-y: scroll;
+  overflow-x: hidden;
+  background-color: $bg-dark;
+  color: $text-primary;
+}
+
+#root {
+  width: 100%;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 4%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 270 91% 55%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 4% 16%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 240 4% 16%;
+    --muted-foreground: 240 5% 65%;
+    --accent: 270 91% 55%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 4% 16%;
+    --input: 240 4% 16%;
+    --ring: 270 91% 55%;
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: $font-family;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* Brand desktop pages are designed at 1440px. Scale fixed desktop chrome with vw like haku-plus-websit. */
+@media (min-width: 768px) {
+  .brand-layout-nav {
+    height: 5.556vw;
+  }
+
+  .brand-layout-nav__inner {
+    height: 5.556vw;
+    padding-left: 5.556vw;
+    padding-right: 5.556vw;
+  }
+
+  .brand-layout-logo {
+    gap: 0.694vw;
+  }
+
+  .brand-layout-logo__mark {
+    width: 2.083vw;
+    height: 2.083vw;
+    border-radius: 0.556vw;
+  }
+
+  .brand-layout-logo__text {
+    font-size: 1.528vw;
+  }
+
+  .brand-layout-links {
+    gap: 3.333vw;
+
+    a {
+      font-size: 1.111vw;
+      letter-spacing: -0.011vw;
+    }
+  }
+
+  .brand-layout-download {
+    margin-left: 0.556vw;
+    padding: 0.694vw 1.25vw;
+    border-radius: 2.778vw;
+  }
+
+  button[aria-label='Back to top'] {
+    right: 4.722vw;
+    bottom: 2.778vw;
+    width: 5.556vw;
+    height: 5.556vw;
+  }
+}
+

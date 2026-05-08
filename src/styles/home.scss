@@ -1,0 +1,450 @@
+@use './variables' as *;
+@use './mixins' as *;
+
+.layout {
+  min-height: 100vh;
+  @include flex-column;
+  background-color: $bg-dark;
+  color: $text-primary;
+  padding-top: 80px;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background-color: rgba($bg-dark, 0.9);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid $border-dark;
+  z-index: 50;
+  transition: all 0.3s ease;
+  padding: 0 $spacing-md;
+
+  @include desktop {
+    padding: 0 5vw;
+  }
+
+  &__container {
+    height: 100%;
+    @include flex-between;
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+  }
+
+  &__logo {
+    font-size: $font-size-xl;
+    font-weight: 800;
+    @include gradient-purple;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: none;
+    background-clip: text;
+  }
+
+  &__links {
+    display: none;
+
+    @include desktop {
+      @include flex-center;
+      gap: $spacing-xl;
+    }
+  }
+
+  &__link {
+    color: $text-secondary;
+    text-decoration: none;
+    font-size: $font-size-sm;
+    font-weight: 500;
+    transition: color 0.2s;
+    position: relative;
+    padding: $spacing-xs 0;
+
+    &:hover {
+      color: $text-primary;
+    }
+
+    &--active {
+      color: $text-primary;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: $primary-color;
+        box-shadow: $shadow-glow;
+        animation: slideIn 0.3s ease;
+      }
+    }
+  }
+
+  &__download {
+    display: none;
+    @include desktop {
+      display: inline-flex;
+    }
+  }
+
+  &__mobile-toggle {
+    display: block;
+    color: $text-primary;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: $spacing-xs;
+
+    @include desktop {
+      display: none;
+    }
+  }
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  background-color: $bg-dark;
+  border-bottom: 1px solid $border-dark;
+  padding: $spacing-lg;
+  z-index: 49;
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  pointer-events: none;
+  box-shadow: $shadow-lg;
+
+  &--open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &__nav {
+    @include flex-column;
+    gap: $spacing-md;
+  }
+
+  &__link {
+    color: $text-secondary;
+    text-decoration: none;
+    font-size: $font-size-base;
+    padding: $spacing-sm 0;
+    border-bottom: 1px solid $bg-dark-tertiary;
+
+    &:hover, &--active {
+      color: $text-primary;
+      color: $primary-color;
+    }
+  }
+}
+
+.scroll-to-top {
+  position: fixed;
+  bottom: $spacing-xl;
+  right: $spacing-xl;
+  background-color: $bg-dark-secondary;
+  border: 1px solid $border-light;
+  color: $primary-color;
+  width: 48px;
+  height: 48px;
+  border-radius: $border-radius-full;
+  @include flex-center;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 40;
+  box-shadow: $shadow-lg;
+
+  &:hover {
+    border-color: $primary-color;
+    box-shadow: $shadow-glow;
+    transform: translateY(-2px);
+  }
+
+  &--visible {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@keyframes slideIn {
+  from { width: 0; opacity: 0; }
+  to { width: 100%; opacity: 1; }
+}
+
+/* Desktop 1440-design responsive scaling, following haku-plus-websit px->vw strategy */
+@media (min-width: 768px) {
+  .home-page {
+    .home-hero {
+      min-height: 74.028vw; /* 1066 / 1440 */
+      padding-top: 5.556vw;
+    }
+
+    .home-hero__image,
+    .home-hero__overlay {
+      height: 59.722vw; /* 860 / 1440 */
+    }
+
+    .home-hero__fade {
+      top: 33.75vw; /* 486 / 1440 */
+      height: 40.278vw; /* 580 / 1440 */
+    }
+
+    .home-hero__content,
+    .home-cta__content {
+      max-width: 71.528vw; /* 1030 / 1440 */
+    }
+
+    .home-hero__content {
+      margin-top: 4.444vw;
+    }
+
+    .home-hero__content h1 {
+      font-size: 6.528vw; /* 94 / 1440 */
+    }
+
+    .home-hero__content p {
+      max-width: 48.472vw; /* 698 / 1440 */
+      margin-top: 1.389vw;
+      font-size: 1.25vw;
+    }
+
+    .home-store-buttons {
+      gap: 1.111vw;
+      margin-top: 2.083vw;
+    }
+
+    .home-store-button {
+      height: 4.444vw;
+      min-width: 11.597vw;
+      gap: 0.556vw;
+      padding-left: 2.083vw;
+      padding-right: 2.083vw;
+      font-size: 1.25vw;
+      border-radius: 6.944vw;
+    }
+
+    .home-store-button__icon {
+      width: 1.528vw;
+      height: 1.528vw;
+    }
+
+    .home-explore {
+      padding-left: 5.556vw;
+      padding-right: 5.556vw;
+      padding-bottom: 7.778vw;
+    }
+
+    .home-section-title {
+      max-width: 63.889vw; /* 920 / 1440 */
+
+      p {
+        margin-bottom: 1.111vw;
+        font-size: 1.25vw;
+      }
+
+      h2 {
+        font-size: 4.167vw; /* 60 / 1440 */
+      }
+    }
+
+    .home-showcase {
+      max-width: 77.778vw; /* 1120 / 1440 */
+      height: 52.778vw; /* 760 / 1440 */
+      margin-top: 6.667vw;
+    }
+
+    .home-showcase__countries {
+      left: 2.778vw;
+      top: 6.667vw;
+      font-size: 5.278vw;
+
+      span {
+        font-size: 1.944vw;
+      }
+    }
+
+    .home-showcase__downloads {
+      right: 5.556vw;
+      bottom: 5.556vw;
+      font-size: 3.75vw;
+
+      span {
+        font-size: 1.25vw;
+      }
+    }
+
+    .home-showcase__image--left {
+      left: 8.333vw;
+      top: 19.444vw;
+      width: 19.792vw;
+      height: 36.111vw;
+      border-radius: 1.111vw;
+    }
+
+    .home-showcase__image--center {
+      top: 8.333vw;
+      width: 28.056vw;
+      height: 54.028vw;
+      border-radius: 1.667vw;
+    }
+
+    .home-showcase__image--right {
+      right: 8.333vw;
+      top: 18.056vw;
+      width: 19.792vw;
+      height: 36.111vw;
+      border-radius: 1.111vw;
+    }
+
+    .home-chat {
+      padding-top: 7.778vw;
+      padding-bottom: 7.778vw;
+    }
+
+    .home-chat__title-wrap {
+      padding-left: 5.556vw;
+      padding-right: 5.556vw;
+    }
+
+    .home-country-row {
+      max-width: 92.083vw; /* 1326 / 1440 */
+      gap: 1.111vw;
+      margin-top: 4.444vw;
+    }
+
+    .home-country-chip {
+      padding: 1.111vw 1.667vw;
+      font-size: 1.667vw;
+    }
+
+    .home-profile-grid {
+      max-width: 88.889vw; /* 1280 / 1440 */
+      gap: 1.944vw;
+      margin-top: 3.333vw;
+    }
+
+    .home-profile-card {
+      height: 27.778vw; /* 400 / 1440 */
+      border-radius: 0.833vw;
+    }
+
+    .home-profile-card__online {
+      left: 1.111vw;
+      top: 1.111vw;
+      padding: 0.278vw 0.556vw;
+      gap: 0.278vw;
+      font-size: 1.25vw;
+
+      span {
+        width: 0.972vw;
+        height: 0.972vw;
+      }
+    }
+
+    .home-profile-card__info {
+      height: 5.694vw;
+      padding-left: 1.111vw;
+      padding-right: 1.111vw;
+
+      h3 {
+        font-size: 1.944vw;
+      }
+
+      p {
+        font-size: 1.528vw;
+      }
+    }
+
+    .home-profile-card__video {
+      width: 4.306vw;
+      height: 4.306vw;
+
+      svg {
+        width: 1.944vw;
+        height: 1.944vw;
+      }
+    }
+
+    .home-profile-fade {
+      height: 40.278vw;
+    }
+
+    .home-view-more-wrap {
+      max-width: 88.889vw;
+      margin-top: -4.444vw;
+    }
+
+    .home-view-more {
+      padding: 1.25vw 2.778vw;
+      font-size: 1.111vw;
+      border-radius: 6.944vw;
+    }
+
+    .home-meet {
+      gap: 3.333vw;
+      padding: 8.889vw 5.556vw;
+    }
+
+    .home-meet__visual {
+      width: 43.056vw;
+      height: 52.778vw;
+    }
+
+    .home-meet__visual > div {
+      border-radius: 1.944vw;
+    }
+
+    .home-meet__content {
+      max-width: 38.889vw;
+
+      p {
+        font-size: 1.25vw;
+      }
+
+      h2 {
+        margin-top: 1.111vw;
+        font-size: 4.167vw;
+      }
+    }
+
+    .home-cta {
+      min-height: 57.917vw; /* 834 / 1440 */
+      padding-top: 15.556vw;
+      padding-bottom: 15.556vw;
+    }
+
+    .home-cta__content p {
+      margin-bottom: 1.389vw;
+      font-size: 1.25vw;
+    }
+
+    .home-cta__content h2 {
+      font-size: 6.111vw; /* 88 / 1440 */
+    }
+
+    .home-footer {
+      left: 5.556vw;
+      right: 5.556vw;
+      bottom: 2.222vw;
+      gap: 1.111vw;
+      font-size: 1.111vw;
+
+      img {
+        width: 2.083vw;
+        height: 2.083vw;
+      }
+
+      span {
+        font-size: 1.667vw;
+      }
+    }
+  }
+}
