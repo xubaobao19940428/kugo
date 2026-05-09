@@ -15,17 +15,13 @@ $font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 
 body, html {
   width: 100%;
-  min-width: 100%;
   height: 100%;
-  // overflow-y: scroll;
-  overflow-x: hidden;
+  overflow-y: scroll;
   background-color: $bg-dark;
   color: $text-primary;
 }
 
 #root {
-  width: 100%;
-  min-width: 100%;
   min-height: 100%;
 }
 
@@ -75,52 +71,20 @@ button {
   font-family: inherit;
 }
 
-/* Brand desktop pages are designed at 1440px. Scale fixed desktop chrome with vw like haku-plus-websit. */
-@media (min-width: 768px) {
-  .brand-layout-nav {
-    height: 5.556vw;
-  }
+// ::-webkit-scrollbar {
+//   width: 8px;
+//   height: 8px;
+// }
 
-  .brand-layout-nav__inner {
-    height: 5.556vw;
-    padding-left: 5.556vw;
-    padding-right: 5.556vw;
-  }
+// ::-webkit-scrollbar-track {
+//   background: $bg-dark-secondary;
+// }
 
-  .brand-layout-logo {
-    gap: 0.694vw;
-  }
+// ::-webkit-scrollbar-thumb {
+//   background: $border-light;
+//   border-radius: 4px;
 
-  .brand-layout-logo__mark {
-    width: 2.083vw;
-    height: 2.083vw;
-    border-radius: 0.556vw;
-  }
-
-  .brand-layout-logo__text {
-    font-size: 1.528vw;
-  }
-
-  .brand-layout-links {
-    gap: 3.333vw;
-
-    a {
-      font-size: 1.111vw;
-      letter-spacing: -0.011vw;
-    }
-  }
-
-  .brand-layout-download {
-    margin-left: 0.556vw;
-    padding: 0.694vw 1.25vw;
-    border-radius: 2.778vw;
-  }
-
-  button[aria-label='Back to top'] {
-    right: 4.722vw;
-    bottom: 2.778vw;
-    width: 5.556vw;
-    height: 5.556vw;
-  }
-}
-
+//   &:hover {
+//     background: $text-muted;
+//   }
+// }
